@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+
+  input {@apply rounded-md p-2 outline-none w-full}
+
+  button{@apply p-6 font-bold text-white bg-blue-500 rounded-md w-1/2 md:w-1/6 }
+}
