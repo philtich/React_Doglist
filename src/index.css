@@ -4,7 +4,7 @@
 
 @layer components{
 
-  input {@apply rounded-md p-2 outline-none w-full}
+  input {@apply rounded-md p-2 w-full border-black}
 
   button{@apply p-6 font-bold text-white bg-blue-500 rounded-md w-1/2 md:w-1/6 }
 }
