@@ -13,6 +13,7 @@ type FormProps = {
 export const Form = ({ setDogName, setRasseName, allDogs, handleClick }: FormProps) => {
     const [rassenName, setRassenName] = useState("")
     const [dogsName, setDogsName] = useState("")
+    
 
   return (
     <div className="pb-4 flex flex-col md:flex-row gap-6 justify-center items-center"> 

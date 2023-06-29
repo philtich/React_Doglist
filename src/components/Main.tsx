@@ -30,8 +30,6 @@ export const Main = () => {
 
         console.log(dog);
         console.log(dogs)
-        setDogName("")
-        setRasseName("")
     }
 
     const [dogName, setDogName] = useState("")
