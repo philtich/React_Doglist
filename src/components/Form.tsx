@@ -1,31 +1,38 @@
 import React from 'react'
 import { useState } from 'react'
-
+import { v4 as uuid } from 'uuid';
 import { dogsType } from './Main';
 
 type FormProps = {
-    setDogName: (dogName: string) => void;
-    setRasseName: (rasseName: string) => void;
     allDogs: dogsType[]
-    handleClick: (event:any) => void
+    setDogs: (arr: dogsType[]) => void
 }
 
-export const Form = ({ setDogName, setRasseName, allDogs, handleClick }: FormProps) => {
-    const [rassenName, setRassenName] = useState("")
-    const [dogsName, setDogsName] = useState("")
-    
+export const Form = ({ allDogs, setDogs }: FormProps) => {
+    const [dogName, setDogName] = useState("")
+    const [rasseName, setRasseName] = useState("")
+    const handleClick = (event: any) => {
+        event.preventDefault();
+        const dog = {
+            id:  uuid(),
+            dogName: dogName,
+            rasseName: rasseName
+        }
+        setDogs([...allDogs, dog])
+        setDogName("")
+        setRasseName("")
+    }
 
   return (
     <div className="pb-4 flex flex-col md:flex-row gap-6 justify-center items-center"> 
             <div className='flex flex-col md:flex-row gap-4 w-full '>
-                <input className={`border-2 ${dogsName.length > 3 ? "outline-green-300" : "outline-red-300"}`}type="text" 
-               name="dogname" placeholder='Dogname' onChange={(event) => {setDogsName(event.target.value); setDogName(event.target.value)}}>    
+                <input value={dogName}className={`border-2 ${dogName.length > 3 ? "outline-green-300" : "outline-red-300"}`}type="text" 
+               name="dogname" placeholder='Dogname' onChange={(event) => {setDogName(event.target.value)}}>    
                 </input>
-                <input className={`border-2 ${(rassenName == "Labrador" || rassenName == "Dackel" || rassenName == "Golden Retriever") ? "outline-green-300" : "outline-red-300"}`}
+                <input value={rasseName} className={`border-2 ${(rasseName == "Labrador" || rasseName == "Dackel" || rasseName == "Golden Retriever") ? "outline-green-300" : "outline-red-300"}`}
                 type="text" placeholder='Rasse' name="rasse" 
-                onChange={(event) => {setRassenName(event.target.value); setRasseName(event.target.value)}} ></input>
+                onChange={(event) => {setRasseName(event.target.value)}} ></input>
             </div>
-            {dogsName.length > 3 && (rassenName == "Labrador" || rassenName == "Dackel" || rassenName == "Golden Retriever") && (<button onClick={handleClick}>Add</button>)}       </div>
+            {dogName.length > 3 && (rasseName == "Labrador" || rasseName == "Dackel" || rasseName == "Golden Retriever") && (<button onClick={handleClick}>Add</button>)}       </div>
   )
 }
-

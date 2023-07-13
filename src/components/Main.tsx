@@ -18,9 +18,8 @@ export const Main = () => {
     { id:  uuid(), dogName: "Sammy", rasseName: "Labrador" },
 ])
 const deleteById = (id:any) => {
-
-    const newDogArray = dogs.filter((dog: dogsType) => dog.id !== id);
-        setDogs(newDogArray)
+  const newDogArray = dogs.filter((dog: dogsType) => dog.id !== id);
+    setDogs(newDogArray)
   }
       
   return (
